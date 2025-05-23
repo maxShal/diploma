@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/deviceIdInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Child Device ID"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/packageNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="App Package Name (e.g., org.telegram.messenger)"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/blockButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Block App" />
+
+    <Button
+        android:id="@+id/unblockButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unblock App" />
+
+</LinearLayout>

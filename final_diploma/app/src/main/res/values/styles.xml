@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme -->
+    <style name="Theme.Final_diploma" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize as needed -->
+    </style>
+
+    <!-- Full-screen theme -->
+    <style name="Theme.Final_diploma.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

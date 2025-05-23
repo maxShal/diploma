@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Внутренний круг -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,9a3,3 0 1,0 0.001,0Z" />
+
+    <!-- Прицельный крест -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M12,2v3 M12,19v3 M2,12h3 M19,12h3" />
+
+    <!-- Внешний круг (контур) -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1"
+        android:fillColor="#00000000"
+        android:pathData="M12,4a8,8 0 1,0 0.001,0Z" />
+</vector>
