@@ -62,7 +62,7 @@ class BlockerService : Service() {
         }
         syncWithServerRunnable = Runnable {
             fetchBlockedAppsFromServer()
-            handler?.postDelayed(syncWithServerRunnable!!, 5000) // Sync every 5 seconds
+            handler?.postDelayed(syncWithServerRunnable!!, 5000)
         }
         handler?.post(checkForegroundAppRunnable!!)
         handler?.post(syncWithServerRunnable!!)
@@ -72,8 +72,8 @@ class BlockerService : Service() {
         durationMinutes = intent?.getIntExtra("duration", 0) ?: 0
         endTime = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(durationMinutes.toLong())
         val localBlockedApps = intent?.getStringArrayListExtra("blockedApps") ?: emptyList()
-        blockedApps.addAll(localBlockedApps) // Add local blocks from ChildActivity
-        fetchBlockedAppsFromServer() // Initial server sync
+        blockedApps.addAll(localBlockedApps)
+        fetchBlockedAppsFromServer()
         return START_STICKY
     }
 
@@ -95,7 +95,6 @@ class BlockerService : Service() {
                             serverBlockedApps.add(jsonArray.getString(i))
                         }
                         synchronized(blockedApps) {
-                            // Merge server list with local list
                             blockedApps.addAll(serverBlockedApps)
                         }
                         Log.d(TAG, "Updated blocked apps from server: $serverBlockedApps")

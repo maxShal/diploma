@@ -19,6 +19,10 @@ class MenuActivity : AppCompatActivity() {
         val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         Log.d("DeviceID", androidId)
 
+        val textId: TextView = findViewById(R.id.textView)
+        textId.text = androidId
+
+
         val parentButton: Button = findViewById(R.id.parentButton)
         val childButton: Button = findViewById(R.id.childButton)
 

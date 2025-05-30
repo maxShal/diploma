@@ -112,26 +112,20 @@ class ChildActivity : AppCompatActivity() {
                 .show()
         }
 
-/*        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, blockedApps.toMutableList())
-        blockedAppsList.choiceMode = ListView.CHOICE_MODE_MULTIPLE
-        blockedAppsList.adapter = adapter
 
-        selectAppsButton.setOnClickListener {
-            showAppSelectionDialog(adapter)
-        }*/
 
         selectAppsButton.setOnClickListener {
             val installedApps = packageManager.getInstalledApplications(0)
                 .filter {
-                    it.packageName != packageName && // Exclude this app
-                            (it.flags and ApplicationInfo.FLAG_SYSTEM) == 0 // Exclude system apps
+                    it.packageName != packageName &&
+                            (it.flags and ApplicationInfo.FLAG_SYSTEM) == 0
                 }
                 .map { AppInfo(it.packageName, packageManager.getApplicationLabel(it).toString(), packageManager.getApplicationIcon(it)) }
                 .sortedBy { it.name }
 
             adapter = AppAdapter(this, installedApps, blockedApps)
             blockedAppsList.adapter = adapter
-            blockedAppsList.visibility = View.VISIBLE // Show the list
+            blockedAppsList.visibility = View.VISIBLE
             adapter.notifyDataSetChanged()
         }
 
@@ -161,33 +155,6 @@ class ChildActivity : AppCompatActivity() {
 
     }
 
-/*    private fun showAppSelectionDialog(adapter: ArrayAdapter<String>) {
-        val pm = packageManager
-        val installedApps = pm.getInstalledApplications(0)
-            .filter { it.packageName != packageName }
-            .map { it.packageName to (pm.getApplicationLabel(it).toString()) }
-            .sortedBy { it.second }
-
-        val appNames = installedApps.map { it.second }.toTypedArray()
-        val appPackageNames = installedApps.map { it.first }
-
-        AlertDialog.Builder(this)
-            .setTitle("Select Apps to Block")
-            .setMultiChoiceItems(appNames, null) { _, which, isChecked ->
-                val packageName = appPackageNames[which]
-                if (isChecked) {
-                    blockedApps.add(packageName)
-                } else {
-                    blockedApps.remove(packageName)
-                }
-                adapter.notifyDataSetChanged()
-            }
-            .setPositiveButton("OK") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-            .show()
-    }*/
 
     private fun hasUsageStatsPermission(): Boolean {
         return try {
@@ -243,7 +210,6 @@ class AppAdapter(
         nameView.text = app.name
         checkBox.isChecked = selectedApps.contains(app.packageName)
 
-        // Handle selection via ListView's choice mode
         view.setOnClickListener {
             val isChecked = !checkBox.isChecked
             checkBox.isChecked = isChecked
